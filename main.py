@@ -31,11 +31,12 @@ if __name__ == "__main__":
     #Link entry box
     link = StringVar()
     linkEntry = ttk.Entry(frm, width=50, textvariable=link)
-    linkEntry.grid(column=1, row=1)
+    linkEntry.grid(column=1, row=1, sticky="ew")
+    frm.columnconfigure(1, weight=1)
 
     #Enter button
-       
-
+    enterButton = ttk.Button(frm, text="Enter...", command=lambda: f.startMeeting(f.convertLink(link.get())))
+    enterButton.grid(column=2, row=1) 
 
     #Quit button
     ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=2)
@@ -46,6 +47,7 @@ if __name__ == "__main__":
 
     #Focus cursor on entry box and bind "Enter" to pressing activate button
     linkEntry.focus()
+    root.bind("<Return>", lambda event: f.startMeeting(f.convertLink(link.get())))
 
     #Starting the application
     root.mainloop()

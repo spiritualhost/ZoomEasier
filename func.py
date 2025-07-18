@@ -25,24 +25,21 @@ def convertLink(zoomLink: str) -> dict:
     password = parse_qs(parsed.query).get('pwd', [''])[0]
 
     zoomAutojoinLink = f"zoommtg://zoom.us/join?action=join&confno={meetingID}&pwd={password}"
-    print(zoomAutojoinLink)
+    print("zoomautojoin:", zoomAutojoinLink)
 
+    return zoomAutojoinLink
 
 import os
 
 def startMeeting(meetingLink: str):
     whereami = whichPlatform()
 
+    print(whereami)
+    print("meeting link", meetingLink)
+    print(f'start "" "{meetingLink}"')
+
     if whereami == "Windows":
         os.system(f'start "" "{meetingLink}"')
 
     elif whereami == "Mac":
         os.system(f'open "{meetingLink}"')
-
-
-
-if __name__ == "__main__":
-
-    zoomLink = "https://us02web.zoom.us/j/88455156579?pwd=RKVGEO3a9a3mxpRPi8ZPkdPES5yQLj.1"
-
-    startMeeting(convertLink(zoomLink))
