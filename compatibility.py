@@ -15,12 +15,8 @@ def is_zoom_installed_windows() -> bool:
         return False
 
 
-
-
 def is_zoom_installed_mac() -> bool:
     return os.path.exists("/Applications/zoom.us.app")
-
-
 
 
 def goodToLaunch():
@@ -31,6 +27,4 @@ def goodToLaunch():
         return True
 
     else:
-        #If OS can't be found, end application
-        messagebox.showerror("System Error", "System not found.")
-        sys.exit()
+        return False
