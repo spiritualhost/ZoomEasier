@@ -2,7 +2,7 @@
 *.json
 
 #Ignore some build files
-build/main
+build/
 
 #Ignore .spec files
 *.spec
