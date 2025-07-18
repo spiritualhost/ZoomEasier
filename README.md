@@ -24,7 +24,7 @@ The application can be extremely helpful for those not fully familiar and/or com
 
 ## Installation
 
-- Beta build currently available for ease of use (v 0.1.0)
+- Beta build for Windows currently available for ease of use (v 0.1.0)
 
 ```bash
 #Clone the repo

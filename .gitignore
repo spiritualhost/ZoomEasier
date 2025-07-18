@@ -1,2 +1,8 @@
 #Ignore json files
 *.json
+
+#Ignore some build files
+build/main
+
+#Ignore .spec files
+*.spec
