@@ -6,3 +6,6 @@ build/
 
 #Ignore .spec files
 *.spec
+
+#Ignore pycache
+__*
