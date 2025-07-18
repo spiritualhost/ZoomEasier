@@ -48,6 +48,17 @@ if __name__ == "__main__":
     root.columnconfigure(0, weight=1)
     root.rowconfigure(0, weight=1)  
 
+    #Adding menu bar for dropdown quick access
+    menubar = Menu(root)
+    fileMenu = Menu(menubar, tearoff=0)
+
+    fileMenu.add_command(label="History", command=lambda: print("This is where the meeting history window would open."))
+    fileMenu.add_command(label="Exit", command=root.quit)
+
+    menubar.add_cascade(label="File", menu=fileMenu)
+    root.config(menu=menubar)
+
+
 
     #Adding widgets to the content frame
     
