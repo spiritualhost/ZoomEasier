@@ -20,6 +20,23 @@ if __name__ == "__main__":
     root = Tk()
     root.title("Zoom Easier")
 
+    #Functions for implementing right-click to paste link functionality
+    #Spawn popup
+    def popup(event):
+        try:
+            dropdownMenu.tk_popup(event.x_root,event.y_root) # Pop the menu up in the given coordinates
+        finally:
+            dropdownMenu.grab_release() #Go away once option is selected
+
+    #Get copied item from system clipboard and insert into entry widget
+    def paste():
+        clipboard = root.clipboard_get()
+        linkEntry.insert('end', clipboard)
+
+    #Populate dropdown menu
+    dropdownMenu = Menu(root, tearoff=0)
+    dropdownMenu.add_command(label="Paste", command=paste)
+
     #Setting max and min window size
     root.minsize(600,400)
     root.maxsize(1200,800)
@@ -35,7 +52,7 @@ if __name__ == "__main__":
     #Adding widgets to the content frame
     
     #Title
-    ttk.Label(frm, text="Paste Zoom link below!").grid(column=1, row=0)
+    ttk.Label(frm, text="Paste Zoom link below, then click enter to join meeting.").grid(column=1, row=0)
 
     #Link entry box
     link = StringVar()
@@ -50,13 +67,21 @@ if __name__ == "__main__":
     #Quit button
     ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=2)
 
+
     #Adding padding
     for child in frm.winfo_children(): 
         child.grid_configure(padx=5, pady=5)
 
+
+    #Bindings
+
     #Focus cursor on entry box and bind "Enter" to pressing activate button
     linkEntry.focus()
     root.bind("<Return>", lambda event: f.startMeeting(f.convertLink(link.get())))
+
+    #Bind right-click to allow paste in entry box
+    linkEntry.bind('<Button 3>', popup)
+
 
     #Starting the application
     root.mainloop()

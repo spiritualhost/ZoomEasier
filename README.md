@@ -5,3 +5,7 @@ Program structure:
 -- main.py -- tkinter window and related formatting
 -- func.py -- main functions for parsing zoom info and starting meetings
 -- compatibility.py -- check for system compatibility both through presence of Zoom and os
+
+Some credit is due to:
+
+https://stackoverflow.com/questions/66512222/how-do-i-enable-right-click-in-entry-and-output-widget-for-pasting-and-copying-r
