@@ -4,9 +4,21 @@ from urllib.parse import urlparse, parse_qs
 import json
 from datetime import datetime
 
+
+#All functions for history system
+
+
+
+
+
+
+
+
+
+
+#Write to history for future reference
 def history(zoomAutoJoinLink: str):
-    #Write to history for future reference
-    today = datetime.today().strftime("%Y-%m-%d")
+    today = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     #History entry format
     historyData =[{"timestamp": today, "zoomAutojoinLink": zoomAutoJoinLink}]
