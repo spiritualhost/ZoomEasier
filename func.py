@@ -1,4 +1,7 @@
 import platform
+import os
+from urllib.parse import urlparse, parse_qs
+
 
 def whichPlatform() -> str:
 
@@ -16,8 +19,6 @@ def whichPlatform() -> str:
         print(f"System error: {e}")
 
 
-from urllib.parse import urlparse, parse_qs
-
 def convertLink(zoomLink: str) -> dict:
     url = zoomLink
     parsed = urlparse(url)
@@ -29,7 +30,6 @@ def convertLink(zoomLink: str) -> dict:
 
     return zoomAutojoinLink
 
-import os
 
 def startMeeting(meetingLink: str):
     whereami = whichPlatform()

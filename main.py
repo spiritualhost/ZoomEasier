@@ -1,20 +1,28 @@
+#Importing libraries
+import sys
+
 #Importing everything from tkinter as well as the ttk submodule, which includes themed modern widgets
 from tkinter import *
-from tkinter import ttk
+from tkinter import ttk, messagebox
 
 #Importing self-defined functions
 import func as f
+import compatibility as c
 
 if __name__ == "__main__":
+
+    #Pre-launch compatibility check (If not good to launch, close the program before a crash)
+    if not c.goodToLaunch():
+        messagebox.showerror("Compatibility Error", "Zoom is not installed. Please install Zoom before using this program.")
+        sys.exit()
   
     #Setting up the main application window
     root = Tk()
     root.title("Zoom Easier")
 
     #Setting max and min window size
-    root.minsize(300,200)
-    root.maxsize(600,400)
-
+    root.minsize(600,400)
+    root.maxsize(1200,800)
 
     #Creating a content frame, which holds GUI contents
     #Columnconfigure and rowconfigure tell Tk to expand the frame to match the size of the window
@@ -22,6 +30,7 @@ if __name__ == "__main__":
     frm.grid(column=0, row=0)
     root.columnconfigure(0, weight=1)
     root.rowconfigure(0, weight=1)  
+
 
     #Adding widgets to the content frame
     
