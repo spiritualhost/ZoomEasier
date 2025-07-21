@@ -1,0 +1,46 @@
+2025-07-21 13:02:25,567 - ERROR - Error: [Errno 22] Invalid argument: 'C:\\Users\\rpiazza\\Desktop\\Zoom Meeting: 2025-07-21 13:02:25.url'
+Traceback (most recent call last):
+  File "D:\r\R&D\ZoomEasier\func.py", line 77, in createShortcut
+    with open(path, "w") as f:
+         ~~~~^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\rpiazza\\Desktop\\Zoom Meeting: 2025-07-21 13:02:25.url'
+2025-07-21 13:02:46,870 - ERROR - Error: [Errno 22] Invalid argument: 'C:\\Users\\rpiazza\\Desktop\\Zoom Meeting: 2025-07-21 13:02:46.url'
+Traceback (most recent call last):
+  File "D:\r\R&D\ZoomEasier\func.py", line 77, in createShortcut
+    with open(path, "w") as f:
+         ~~~~^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\rpiazza\\Desktop\\Zoom Meeting: 2025-07-21 13:02:46.url'
+2025-07-21 13:03:13,962 - ERROR - Error: [Errno 22] Invalid argument: 'C:\\Users\\rpiazza\\Desktop\\Zoom Meeting: 2025-07-21 13:03:13.url'
+Traceback (most recent call last):
+  File "D:\r\R&D\ZoomEasier\func.py", line 77, in createShortcut
+    with open(path, "w") as f:
+         ~~~~^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\rpiazza\\Desktop\\Zoom Meeting: 2025-07-21 13:03:13.url'
+2025-07-21 13:05:41,491 - ERROR - Error: [Errno 22] Invalid argument: 'C:\\Users\\rpiazza\\Desktop\\Zoom Meeting - 2025-07-21 13:05:41.url'
+Traceback (most recent call last):
+  File "D:\r\R&D\ZoomEasier\func.py", line 77, in createShortcut
+    with open(path, "w") as f:
+         ~~~~^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\rpiazza\\Desktop\\Zoom Meeting - 2025-07-21 13:05:41.url'
+2025-07-21 13:06:02,337 - ERROR - Error: [Errno 22] Invalid argument: 'C:\\Users\\rpiazza\\Desktop\\Zoom Meeting - 2025-07-21 13:06:02.url'
+Traceback (most recent call last):
+  File "D:\r\R&D\ZoomEasier\func.py", line 77, in createShortcut
+    with open(path, "w") as f:
+         ~~~~^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\rpiazza\\Desktop\\Zoom Meeting - 2025-07-21 13:06:02.url'
+2025-07-21 13:09:38,728 - ERROR - Error in main.py, paste() function
+Traceback (most recent call last):
+  File "D:\r\R&D\ZoomEasier\main.py", line 54, in paste
+    clipboard = root.clipboard_get()
+  File "C:\Users\rpiazza\AppData\Local\Programs\Python\Python313\Lib\tkinter\__init__.py", line 1021, in clipboard_get
+    return self.tk.call(('clipboard', 'get') + self._options(kw))
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_tkinter.TclError: CLIPBOARD selection doesn't exist or form "STRING" not defined
+2025-07-21 13:09:39,775 - ERROR - Error in main.py, paste() function
+Traceback (most recent call last):
+  File "D:\r\R&D\ZoomEasier\main.py", line 54, in paste
+    clipboard = root.clipboard_get()
+  File "C:\Users\rpiazza\AppData\Local\Programs\Python\Python313\Lib\tkinter\__init__.py", line 1021, in clipboard_get
+    return self.tk.call(('clipboard', 'get') + self._options(kw))
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_tkinter.TclError: CLIPBOARD selection doesn't exist or form "STRING" not defined

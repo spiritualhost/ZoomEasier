@@ -103,8 +103,12 @@ if __name__ == "__main__":
     enterButton = ttk.Button(frm, text="Enter...", command=lambda: f.startMeeting(f.convertLink(link.get())))
     enterButton.grid(column=2, row=1) 
 
+    #Create shortcut button
+    shortcut = ttk.Button(frm, text="Create shortcut...", command=lambda: f.createShortcut(link.get()))
+    shortcut.grid(column=1, row=2)
+
     #Quit button
-    ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=2)
+    ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=3)
 
 
     #Adding padding

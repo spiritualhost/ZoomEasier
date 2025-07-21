@@ -9,3 +9,6 @@ build/
 
 #Ignore pycache
 __*
+
+#Ignore .log
+*.log

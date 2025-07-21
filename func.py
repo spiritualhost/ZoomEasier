@@ -4,8 +4,9 @@ import platform
 import os
 from urllib.parse import urlparse, parse_qs
 import json
-from datetime import datetime
 import logging
+import re
+from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
@@ -63,3 +64,33 @@ def startMeeting(meetingLink: str):
     except Exception as e:
         logger.exception()
 
+
+def createShortcut(meetingLink: str):
+    try:
+        whereami = whichPlatform()
+        if whereami == "Windows":
+            
+            timestamp = re.sub(r'[\\/*?:"<>|]', '-', datetime.now().strftime('%Y-%m-%d %H-%M-%S'))
+            launchLink = convertLink(meetingLink)
+
+            desktop = os.path.join(os.environ["USERPROFILE"], "Desktop")
+            path = os.path.join(desktop, f"Zoom Meeting - {timestamp}.url")
+
+            content = f"""[InternetShortcut]
+            URL={launchLink}"""
+
+
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(content)
+            
+
+        elif whereami == "Mac":
+            print("You're on a Mac.")
+
+
+
+
+    except Exception as e:
+        logger.exception(f"Error: {e}")
+
+    
