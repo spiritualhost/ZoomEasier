@@ -34,19 +34,14 @@ git clone https://github.com/spiritualhost/ZoomEasier.git
 cd ZoomEasier
 
 #Install dependencies
-#For Windows
-pip install -r requirements.txt
-pip install pyinstaller
-
-
-#For MacOS
-
+python.exe install.py
 
 #Install app
 #For Windows
-pyinstaller --onefile --windowed your_script.py
+pyinstaller --onefile --windowed --name=ZoomEasier main.py
 
-#For MacOS
+#For MacOS - this creates a .app bundle
+pyinstaller --windowed --name=ZoomEasier main.py
 
 ```
 

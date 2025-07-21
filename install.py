@@ -1,4 +1,5 @@
 import subprocess, sys, logging
+from func import whichPlatform
 
 logger = logging.getLogger(__name__)
 
