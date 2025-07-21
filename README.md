@@ -34,7 +34,19 @@ git clone https://github.com/spiritualhost/ZoomEasier.git
 cd ZoomEasier
 
 #Install dependencies
-#***Needs to be added
+#For Windows
+pip install -r requirements.txt
+pip install pyinstaller
+
+
+#For MacOS
+
+
+#Install app
+#For Windows
+pyinstaller --onefile --windowed your_script.py
+
+#For MacOS
 
 ```
 
@@ -48,10 +60,10 @@ Program structure:
 
 
 ---
+
 ## Requirements
 - Python 3.x
 - Zoom
-
 
 ---
 
