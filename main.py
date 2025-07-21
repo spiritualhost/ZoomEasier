@@ -85,7 +85,6 @@ if __name__ == "__main__":
 
 
     #Bindings
-
     #Focus cursor on entry box and bind "Enter" to pressing activate button
     linkEntry.focus()
     root.bind("<Return>", lambda event: f.startMeeting(f.convertLink(link.get())))

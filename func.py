@@ -1,3 +1,5 @@
+from tkinter import *
+from tkinter import ttk
 import platform
 import os
 from urllib.parse import urlparse, parse_qs
@@ -5,45 +7,9 @@ import json
 from datetime import datetime
 
 
-#All functions for history system
-
-
-
-
-
-
-
-
-
-
-#Write to history for future reference
-def history(zoomAutoJoinLink: str):
-    today = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-    #History entry format
-    historyData =[{"timestamp": today, "zoomAutojoinLink": zoomAutoJoinLink}]
-    
-    try:
-
-        historyFile = "history.json"
-
-        if os.path.exists(historyFile):
-            with open(historyFile, "r") as f:
-                data = json.load(f)
-        else:
-            data = []
-
-        data.append(historyData)
-
-        with open(historyFile, "w") as f:
-            json.dump(data, f, indent=4)
-
-
-    except Exception as e:
-
-        #Add logging here for error catch
-
-        print("History error: file link corrupted")
+#Self-defined class
+from historymenu import HistoryDropdown
+hd = HistoryDropdown()
 
 
 def whichPlatform() -> str:
@@ -72,7 +38,7 @@ def convertLink(zoomLink: str) -> dict:
     print("zoomautojoin:", zoomAutojoinLink)
 
     #Write autojoin link to history
-    history(zoomAutojoinLink)
+    hd.addEntry(zoomAutojoinLink)
     
     return zoomAutojoinLink
 
