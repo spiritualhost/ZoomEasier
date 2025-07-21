@@ -7,7 +7,12 @@ from tkinter import ttk, messagebox
 
 #Importing self-defined functions
 import func as f
+
 import compatibility as c
+
+from historymenu import HistoryDropdown
+hd = HistoryDropdown()
+
 
 if __name__ == "__main__":
 
@@ -52,7 +57,11 @@ if __name__ == "__main__":
     menubar = Menu(root)
     fileMenu = Menu(menubar, tearoff=0)
 
-    fileMenu.add_command(label="History", command=lambda: print("This is where the meeting history window would open."))
+
+    historySub = hd.histChoices(fileMenu)
+    fileMenu.add_cascade(label="History", menu=historySub)
+    
+    fileMenu.add_separator()
     fileMenu.add_command(label="Exit", command=root.quit)
 
     menubar.add_cascade(label="File", menu=fileMenu)

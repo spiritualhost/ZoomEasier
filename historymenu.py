@@ -1,5 +1,10 @@
 from datetime import datetime
-import json
+import json, os
+from tkinter import messagebox, Menu
+
+#Self-defined
+import func as f
+
 
 class HistoryDropdown:
     #Class attributes
@@ -9,7 +14,6 @@ class HistoryDropdown:
 
     #Ensures that history.json exists and creates it if it doesn't
     def _ensure_file(self):
-        import os, json
         if not os.path.exists(self.path):
             with open(self.path, "w") as f:
                 json.dump([], f)
@@ -58,5 +62,28 @@ class HistoryDropdown:
 
 
     #Create dropdown
+    def histChoices(self, parent):
 
-    
+        try:
+            histMenu = Menu(parent, tearoff=0)
+            history = self.loadEntries()
+            print(history)
+
+            #Show newest first
+            for entry in reversed(history): 
+
+                #Format history options in menu
+                timestamp = f"{entry['timestamp']}"
+                zoomAutojoinLink = entry['zoomAutojoinLink']
+                
+                
+                #Add history options to dropdown menu
+                histMenu.add_command(
+                    label=timestamp,
+                    command=lambda link=zoomAutojoinLink: (self.addEntry(link), f.startMeeting(link))
+                )
+            
+            return histMenu
+
+        except Exception as e:
+            print(f"Error: {e}")
