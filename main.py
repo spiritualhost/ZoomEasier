@@ -14,7 +14,6 @@ import func as f
 import compatibility as c
 
 from historymenu import HistoryDropdown
-hd = HistoryDropdown()
 
 #Set up logging
 logFile = "zoomeasier.log"
@@ -27,6 +26,8 @@ logger = logging.getLogger(__name__)
 
 
 if __name__ == "__main__":
+
+    hd = HistoryDropdown()
 
     #Pre-launch compatibility check (If not good to launch, close the program before a crash)
     if not c.goodToLaunch():
