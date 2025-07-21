@@ -1,10 +1,12 @@
 from datetime import datetime
 import json, os
 from tkinter import messagebox, Menu
+import logging
 
 #Self-defined
 import func as f
 
+logger = logging.getLogger(__name__)
 
 class HistoryDropdown:
     #Class attributes
@@ -12,11 +14,13 @@ class HistoryDropdown:
         self.path = path
         self._ensure_file()
 
+
     #Ensures that history.json exists and creates it if it doesn't
     def _ensure_file(self):
         if not os.path.exists(self.path):
             with open(self.path, "w") as f:
                 json.dump([], f)
+
 
     #Add a new entry to the history file
     #The link should already be parsed and formatted as a zoomautojoin at this point
@@ -44,9 +48,7 @@ class HistoryDropdown:
 
         except Exception as e:
 
-            print(f"Error: {e}")
-
-            return 0
+            logger.exception()
     
 
     #Load all the entries in history
@@ -54,11 +56,10 @@ class HistoryDropdown:
         try:
             with open(self.path, "r") as f:
                 data = json.load(f)
-                print(data)
                 return data
             
         except Exception as e:
-            print(f"Error: {e}")
+            logger.exception()
 
 
     #Create dropdown
@@ -67,7 +68,6 @@ class HistoryDropdown:
         try:
             histMenu = Menu(parent, tearoff=0)
             history = self.loadEntries()
-            print(history)
 
             #Show newest first
             for entry in reversed(history): 
@@ -86,4 +86,4 @@ class HistoryDropdown:
             return histMenu
 
         except Exception as e:
-            print(f"Error: {e}")
+            logger.exception()

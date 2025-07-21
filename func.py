@@ -5,11 +5,9 @@ import os
 from urllib.parse import urlparse, parse_qs
 import json
 from datetime import datetime
+import logging
 
-
-#Self-defined class
-from historymenu import HistoryDropdown
-hd = HistoryDropdown()
+logger = logging.getLogger(__name__)
 
 
 def whichPlatform() -> str:
@@ -25,33 +23,43 @@ def whichPlatform() -> str:
             return "Mac"
 
     except Exception as e:
-        print(f"System error: {e}")
+        logger.exception()
+
 
 
 def convertLink(zoomLink: str) -> dict:
-    url = zoomLink
-    parsed = urlparse(url)
-    meetingID = parsed.path.split("/")[-1]
-    password = parse_qs(parsed.query).get('pwd', [''])[0]
+    try:
+        
+        url = zoomLink
+        parsed = urlparse(url)
+        meetingID = parsed.path.split("/")[-1]
+        password = parse_qs(parsed.query).get('pwd', [''])[0]
 
-    zoomAutojoinLink = f"zoommtg://zoom.us/join?action=join&confno={meetingID}&pwd={password}"
-    print("zoomautojoin:", zoomAutojoinLink)
+        zoomAutojoinLink = f"zoommtg://zoom.us/join?action=join&confno={meetingID}&pwd={password}"
 
-    #Write autojoin link to history
-    hd.addEntry(zoomAutojoinLink)
+        #Write autojoin link to history
+        from historymenu import HistoryDropdown
+        hd = HistoryDropdown()
+        hd.addEntry(zoomAutojoinLink)
+            
+        return zoomAutojoinLink
     
-    return zoomAutojoinLink
+    except Exception as e:
+        logger.exception()
+
 
 
 def startMeeting(meetingLink: str):
     whereami = whichPlatform()
 
-    print(whereami)
-    print("meeting link", meetingLink)
-    print(f'start "" "{meetingLink}"')
+    try:
 
-    if whereami == "Windows":
-        os.system(f'start "" "{meetingLink}"')
+        if whereami == "Windows":
+            os.system(f'start "" "{meetingLink}"')
 
-    elif whereami == "Mac":
-        os.system(f'open "{meetingLink}"')
+        elif whereami == "Mac":
+            os.system(f'open "{meetingLink}"')
+
+    except Exception as e:
+        logger.exception()
+

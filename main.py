@@ -1,5 +1,6 @@
 #Importing libraries
 import sys
+import logging
 
 #Importing everything from tkinter as well as the ttk submodule, which includes themed modern widgets
 from tkinter import *
@@ -15,17 +16,27 @@ import compatibility as c
 from historymenu import HistoryDropdown
 hd = HistoryDropdown()
 
+#Set up logging
+logFile = "zoomeasier.log"
+logging.basicConfig(
+    filename=logFile,
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+)
+logger = logging.getLogger(__name__)
+
 
 if __name__ == "__main__":
 
     #Pre-launch compatibility check (If not good to launch, close the program before a crash)
     if not c.goodToLaunch():
         messagebox.showerror("Compatibility Error", "Zoom is not installed. Please install Zoom before using this program.")
+        logger.error("Error in launch, Zoom error. Is Zoom installed on the system?")
         sys.exit()
   
     #Setting up the main application window
     #root = Tk()
-    style = Style("darkly")
+    style = Style("superhero")
     root = style.master
     root.title("Zoom Easier")
 
@@ -39,8 +50,13 @@ if __name__ == "__main__":
 
     #Get copied item from system clipboard and insert into entry widget
     def paste():
-        clipboard = root.clipboard_get()
-        linkEntry.insert('end', clipboard)
+        try:
+            clipboard = root.clipboard_get()
+            linkEntry.insert('end', clipboard)
+
+        except Exception as e:
+            logger.exception("Error in main.py, paste() function")
+
 
     #Populate dropdown menu
     dropdownMenu = Menu(root, tearoff=0)
