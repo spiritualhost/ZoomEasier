@@ -4,6 +4,8 @@ import sys
 #Importing everything from tkinter as well as the ttk submodule, which includes themed modern widgets
 from tkinter import *
 from tkinter import ttk, messagebox
+from ttkbootstrap import Style
+from ttkbootstrap.constants import *
 
 #Importing self-defined functions
 import func as f
@@ -22,7 +24,9 @@ if __name__ == "__main__":
         sys.exit()
   
     #Setting up the main application window
-    root = Tk()
+    #root = Tk()
+    style = Style("darkly")
+    root = style.master
     root.title("Zoom Easier")
 
     #Functions for implementing right-click to paste link functionality
@@ -51,7 +55,7 @@ if __name__ == "__main__":
     frm = ttk.Frame(root, padding=10)
     frm.grid(column=0, row=0)
     root.columnconfigure(0, weight=1)
-    root.rowconfigure(0, weight=1)  
+    root.rowconfigure(0, weight=1) 
 
     #Adding menu bar for dropdown quick access
     menubar = Menu(root)
@@ -66,7 +70,6 @@ if __name__ == "__main__":
 
     menubar.add_cascade(label="File", menu=fileMenu)
     root.config(menu=menubar)
-
 
 
     #Adding widgets to the content frame
