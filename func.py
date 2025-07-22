@@ -89,17 +89,16 @@ def createShortcut(meetingLink: str):
             filename = f"Zoom Meeting - {timestamp}.webloc"
             path = os.path.join(desktopPath, filename)
 
-            xml = f'''<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>URL</key>
-    <string>{launchLink}</string>
-</dict>
-</plist>'''
+            #Template for MacOS webloc bc difficult with formatting
+            template = "template.webloc"
+
+            with open(template, "r", encoding="utf-8") as f:
+                template = f.read()
+            
+            shortcutContent = template.replace("{{launchLink}}", launchLink)
 
             with open(path, "w", encoding="utf-8") as f:
-                f.write(xml)
+                f.write(shortcutContent)
 
 
     except Exception as e:
