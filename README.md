@@ -50,7 +50,6 @@ pyinstaller --onefile --windowed --name=ZoomEasier main.py
 pyinstaller --onefile --windowed --name=ZoomEasier main.py
 
 
-
 ```
 
 ---

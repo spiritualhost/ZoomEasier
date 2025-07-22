@@ -1,7 +1,7 @@
 from urllib.parse import urlparse, parse_qs
 from datetime import datetime
 
-import platform, os, json, logging, re
+import platform, os, logging, re
 
 
 logger = logging.getLogger(__name__)
@@ -81,9 +81,32 @@ def createShortcut(meetingLink: str):
             
 
         elif whereami == "Mac":
-            print("You're on a Mac.")
 
+            #Link converted to auto-open in Zoom
+            launchLink = convertLink(meetingLink)
 
+            #Expand ~ into file path to user's home directory, get combined filepath to user Desktop
+            home = os.path.expanduser("~")
+            path = os.path.join(home, "Desktop")
+            
+            #Get timestamp for filename
+            timestamp = datetime.now().strftime("%Y-%m-%d %H-%M-%S")
+            filename = f"Zoom Meeting - {timestamp}.webloc"
+
+                # Write .webloc XML
+            xml = f'''<?xml version="1.0" encoding="UTF-8"?>
+            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" 
+                "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+            <plist version="1.0">
+                <dict>
+                    <key>URL</key>
+                    <string>{launchLink}</string>
+                </dict>
+            </plist>
+            '''
+
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(xml)
 
 
     except Exception as e:
