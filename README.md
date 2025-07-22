@@ -44,10 +44,10 @@ python.exe install.py
 
 #Install app
 #For Windows
-pyinstaller --onefile --windowed --name=ZoomEasier main.py
+pyinstaller --onefile --windowed --name=ZoomEasier --icon=assets/icons/wiz.ico main.py
 
 #For MacOS - this creates a .app bundle
-pyinstaller --onefile --windowed --name=ZoomEasier main.py
+pyinstaller --onefile --windowed --name=ZoomEasier --icon=assets/wiz.icns main.py
 
 ```
 
@@ -72,8 +72,6 @@ pyinstaller --onefile --windowed --name=ZoomEasier main.py
 
 ## Known Issues
 - MacOS desktop webloc shortcuts refuse to open directly in Zoom app, instead opening in the browser
-
-
 
 ---
 
