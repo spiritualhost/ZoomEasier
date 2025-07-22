@@ -47,7 +47,7 @@ python.exe install.py
 pyinstaller --onefile --windowed --name=ZoomEasier --icon=assets/icons/wiz.ico main.py
 
 #For MacOS - this creates a .app bundle
-pyinstaller --onefile --windowed --name=ZoomEasier --icon=assets/wiz.icns main.py
+pyinstaller --onefile --windowed --name=ZoomEasier --icon=assets/icons/wiz.icns main.py
 
 ```
 
