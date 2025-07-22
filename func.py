@@ -83,6 +83,11 @@ def createShortcut(meetingLink: str):
         elif whereami == "Mac":
 
             launchLink = convertLink(meetingLink)
+            print(launchLink)
+
+            #Temp for mac troubleshooting
+            launchLink = meetingLink
+
             home = os.path.expanduser("~")
             desktopPath = os.path.join(home, "Desktop")
             timestamp = re.sub(r'[\\/*?:"<>|]', '-', datetime.now().strftime('%Y-%m-%d %H-%M-%S'))
