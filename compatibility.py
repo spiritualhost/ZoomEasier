@@ -1,7 +1,5 @@
 import func as f
 import os
-import sys
-from tkinter import messagebox
 
 def is_zoom_installed_windows() -> bool:
     try:

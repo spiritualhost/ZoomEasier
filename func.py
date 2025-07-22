@@ -1,12 +1,8 @@
-from tkinter import *
-from tkinter import ttk
-import platform
-import os
 from urllib.parse import urlparse, parse_qs
-import json
-import logging
-import re
 from datetime import datetime
+
+import platform, os, json, logging, re
+
 
 logger = logging.getLogger(__name__)
 

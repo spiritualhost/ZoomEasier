@@ -1,7 +1,6 @@
 from datetime import datetime
-import json, os
+import json, os, logging
 from tkinter import messagebox, Menu
-import logging
 
 #Self-defined
 import func as f

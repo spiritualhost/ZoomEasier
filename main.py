@@ -1,6 +1,5 @@
 #Importing libraries
-import sys
-import logging
+import sys, logging
 
 #Importing everything from tkinter as well as the ttk submodule, which includes themed modern widgets
 from tkinter import *
@@ -10,9 +9,7 @@ from ttkbootstrap.constants import *
 
 #Importing self-defined functions
 import func as f
-
 import compatibility as c
-
 from historymenu import HistoryDropdown
 
 #Set up logging
