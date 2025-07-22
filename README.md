@@ -49,12 +49,11 @@ pyinstaller --onefile --windowed --name=ZoomEasier main.py
 #For MacOS - this creates a .app bundle
 pyinstaller --onefile --windowed --name=ZoomEasier main.py
 
-
 ```
 
 ---
 
-Program structure:
+## Program structure:
 
 - main.py -- tkinter window and related formatting
 - func.py -- main functions for parsing zoom info and starting meetings
@@ -67,6 +66,13 @@ Program structure:
 ## Requirements
 - Python 3.x
 - Zoom
+
+---
+
+## Known Issues
+- MacOS desktop webloc shortcuts refuse to open directly in Zoom app, instead opening in the browser
+
+
 
 ---
 
