@@ -72,6 +72,8 @@ pyinstaller --onefile --windowed --name=ZoomEasier --icon=assets/icons/wiz.icns 
 
 ## Known Issues
 - MacOS desktop webloc shortcuts refuse to open directly in Zoom app, instead opening in the browser
+- MacOS desktop webloc shortcuts can export as blank and unusable
+- MacOS installation issues
 
 ---
 
