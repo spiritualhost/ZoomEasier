@@ -10,7 +10,13 @@ A basic little app to make launching into Zoom meetings a bit easier.
 
 Written in Python with Tkinter, the main point of the app is to allow quick launching of Zoom meetings by the invite link. 
 
+![UI Preview](assets/README/history.png)
+
 The history option will allow quickly jumping back to previous meetings.
+
+![UI Preview](assets/README/shortcuts.png)
+
+Easily create desktop shortcuts (Windows) and aliases (MacOS) to jump back in to repeating meetings/rooms. 
 
 The application can be extremely helpful for those not fully familiar and/or comfortable with Zoom's UI. 
 
