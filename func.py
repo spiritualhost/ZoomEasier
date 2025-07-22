@@ -87,11 +87,13 @@ def createShortcut(meetingLink: str):
 
             #Expand ~ into file path to user's home directory, get combined filepath to user Desktop
             home = os.path.expanduser("~")
-            path = os.path.join(home, "Desktop")
+            desktopPath = os.path.join(home, "Desktop")
             
             #Get timestamp for filename
             timestamp = datetime.now().strftime("%Y-%m-%d %H-%M-%S")
             filename = f"Zoom Meeting - {timestamp}.webloc"
+
+            path = os.path.join(desktopPath, filename)
 
                 # Write .webloc XML
             xml = f'''<?xml version="1.0" encoding="UTF-8"?>
@@ -110,6 +112,4 @@ def createShortcut(meetingLink: str):
 
 
     except Exception as e:
-        logger.exception(f"Error: {e}")
-
-    
+        logger.exception(f"Error: {e}")   
