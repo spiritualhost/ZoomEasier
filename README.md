@@ -41,7 +41,8 @@ python.exe install.py
 pyinstaller --onefile --windowed --name=ZoomEasier main.py
 
 #For MacOS - this creates a .app bundle
-python macSetup.py py2app
+pyinstaller --onefile --windowed --name=ZoomEasier main.py
+
 
 
 ```
