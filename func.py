@@ -91,6 +91,7 @@ def createShortcut(meetingLink: str):
 
             #Template for MacOS webloc bc difficult with formatting
             template = "template.webloc"
+            #cwd = os.get_cwd() 
 
             with open(template, "r", encoding="utf-8") as f:
                 template = f.read()
