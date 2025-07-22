@@ -64,8 +64,9 @@ pyinstaller --onefile --windowed --name=ZoomEasier main.py
 ---
 
 ## Requirements
-- Python 3.x
+- Python 3.x (Preferably from the official website, not the Microsoft or Apple store)
 - Zoom
+- Git
 
 ---
 
