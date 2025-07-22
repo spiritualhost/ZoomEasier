@@ -82,30 +82,21 @@ def createShortcut(meetingLink: str):
 
         elif whereami == "Mac":
 
-            #Link converted to auto-open in Zoom
             launchLink = convertLink(meetingLink)
-
-            #Expand ~ into file path to user's home directory, get combined filepath to user Desktop
             home = os.path.expanduser("~")
             desktopPath = os.path.join(home, "Desktop")
-            
-            #Get timestamp for filename
-            timestamp = datetime.now().strftime("%Y-%m-%d %H-%M-%S")
+            timestamp = re.sub(r'[\\/*?:"<>|]', '-', datetime.now().strftime('%Y-%m-%d %H-%M-%S'))
             filename = f"Zoom Meeting - {timestamp}.webloc"
-
             path = os.path.join(desktopPath, filename)
 
-                # Write .webloc XML
             xml = f'''<?xml version="1.0" encoding="UTF-8"?>
-            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" 
-                "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-            <plist version="1.0">
-                <dict>
-                    <key>URL</key>
-                    <string>{launchLink}</string>
-                </dict>
-            </plist>
-            '''
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>URL</key>
+    <string>{launchLink}</string>
+</dict>
+</plist>'''
 
             with open(path, "w", encoding="utf-8") as f:
                 f.write(xml)
