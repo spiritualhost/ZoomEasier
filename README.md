@@ -25,6 +25,7 @@ The application can be extremely helpful for those not fully familiar and/or com
 ## Features
 - Easy meeting launches with Zoom 
 - History in json with timestamps for rapid recall of previous meetings
+- Zoom meeting desktop shortcuts
 
 ---
 
