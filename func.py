@@ -82,10 +82,8 @@ def createShortcut(meetingLink: str):
 
         elif whereami == "Mac":
 
-            launchLink = convertLink(meetingLink)
-            print(launchLink)
-
             #Temp for mac troubleshooting
+            #Can't get shortcuts to work unless launching the Zoom web link
             launchLink = meetingLink
 
             home = os.path.expanduser("~")
@@ -96,8 +94,7 @@ def createShortcut(meetingLink: str):
 
             #Template for MacOS webloc bc difficult with formatting
             template = "template.webloc"
-            #cwd = os.get_cwd() 
-
+            
             with open(template, "r", encoding="utf-8") as f:
                 template = f.read()
             
