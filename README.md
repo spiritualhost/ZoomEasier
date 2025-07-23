@@ -65,14 +65,14 @@ pyinstaller --onefile --windowed --name=ZoomEasier --icon=assets/icons/wiz.icns 
 ## Requirements
 - Python 3.x (Preferably from the official website, not the Microsoft or Apple store)
 - Zoom
-- Git
 
 ---
 
 ## Known Issues
 - MacOS desktop webloc shortcuts refuse to open directly in Zoom app, instead opening in the browser
 - MacOS desktop webloc shortcuts can export as blank and unusable
-- MacOS installation issues
+- MacOS installation issues, ease of installation in general
+- Installation of Python dependencies to global environment. This should be fixed for long-term scalability to user machines, but the app was primarily developed for usage on "kiosk" Macs used in conference rooms. 
 
 ---
 
