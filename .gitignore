@@ -12,3 +12,7 @@ __*
 
 #Ignore .log
 *.log
+
+#Ignore Testing Module
+testing.py
+

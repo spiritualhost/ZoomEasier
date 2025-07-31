@@ -76,9 +76,17 @@ if __name__ == "__main__":
     fileMenu = Menu(menubar, tearoff=0)
 
 
-    historySub = hd.histChoices(fileMenu)
-    fileMenu.add_cascade(label="History", menu=historySub)
+    #historySub = hd.histChoices(fileMenu)
+    #fileMenu.add_cascade(label="History", menu=historySub)
+
+    #Initialize history handler and menu
+    historyMenu = Menu(fileMenu, tearoff=0)
+    historyMenu.configure(postcommand=lambda: hd.refreshHistoryMenu(historyMenu))
+    fileMenu.add_cascade(label="History", menu=historyMenu)
     
+    fileMenu.add_separator()
+    fileMenu.add_command(label="Clear History", command=hd.clearHistory)
+
     fileMenu.add_separator()
     fileMenu.add_command(label="Exit", command=root.quit)
 

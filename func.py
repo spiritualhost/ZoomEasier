@@ -26,7 +26,7 @@ def whichPlatform() -> str:
 
 def convertLink(zoomLink: str) -> dict:
     try:
-        
+       
         url = zoomLink
         parsed = urlparse(url)
         meetingID = parsed.path.split("/")[-1]
@@ -50,6 +50,9 @@ def startMeeting(meetingLink: str):
     whereami = whichPlatform()
 
     try:
+        if not meetingLink:
+            logger.error("Empty or bad link passed to startMeeting")
+            return
 
         if whereami == "Windows":
             os.system(f'start "" "{meetingLink}"')
@@ -106,3 +109,5 @@ def createShortcut(meetingLink: str):
 
     except Exception as e:
         logger.exception(f"Error: {e}")   
+
+

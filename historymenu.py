@@ -86,3 +86,37 @@ class HistoryDropdown:
 
         except Exception as e:
             logger.exception()
+        
+
+    #Refresh history menu
+    def refreshHistoryMenu(self, menu):
+        try:
+            menu.delete(0, "end")
+            entries = self.loadEntries()
+        
+            for entry in reversed(entries):
+                timestamp = entry["timestamp"]
+                link = entry["zoomAutojoinLink"]
+                menu.add_command(
+                    label=timestamp,
+                    command=lambda link=link: (self.addEntry(link), f.startMeeting(link))
+                )
+
+        except Exception as e:
+            logger.exception("Error refreshing history menu.")
+
+
+    #Clear meeting history
+    def clearHistory(self):
+        try:
+            with open(self.path, "r") as f:
+                data = json.load(f)
+                print(data)
+                data = []
+            
+            with open(self.path, "w") as f:
+                json.dump(data, f, indent=4)
+
+
+        except Exception as e:
+            logger.exception(f"Clearing history error: {e}")
