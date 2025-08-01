@@ -24,10 +24,10 @@ def whichPlatform() -> str:
 
 
 
-def convertLink(zoomLink: str) -> dict:
+def convertLink(zoomLink: str) -> str:
     try:
        
-        url = zoomLink
+        url = zoomLink.strip()
         parsed = urlparse(url)
         meetingID = parsed.path.split("/")[-1]
         password = parse_qs(parsed.query).get('pwd', [''])[0]
@@ -42,7 +42,23 @@ def convertLink(zoomLink: str) -> dict:
         return zoomAutojoinLink
     
     except Exception as e:
-        logger.exception()
+        logger.exception("Error converting hyperlink to zoomAutojoinLink")
+
+
+
+def manualMeeting(meetingID: str, password: str) -> str:
+        try:
+            zoomAutojoinLink = f"zoommtg://zoom.us/join?action=join&confno={meetingID.strip()}&pwd={password.strip()}"
+
+            #Write autojoin link to history
+            from historymenu import HistoryDropdown
+            hd = HistoryDropdown()
+            hd.addEntry(zoomAutojoinLink)
+
+            return zoomAutojoinLink
+        
+        except Exception as e:
+            logger.exception("Error converting manual meeting data")
 
 
 

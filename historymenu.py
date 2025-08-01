@@ -111,12 +111,10 @@ class HistoryDropdown:
         try:
             with open(self.path, "r") as f:
                 data = json.load(f)
-                print(data)
                 data = []
             
             with open(self.path, "w") as f:
                 json.dump(data, f, indent=4)
-
 
         except Exception as e:
             logger.exception(f"Clearing history error: {e}")

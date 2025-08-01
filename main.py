@@ -24,6 +24,7 @@ logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
 
+    #Initialize the history menu instance
     hd = HistoryDropdown()
 
     #Pre-launch compatibility check (If not good to launch, close the program before a crash)
@@ -95,26 +96,59 @@ if __name__ == "__main__":
 
 
     #Adding widgets to the content frame
-    
-    #Title
-    ttk.Label(frm, text="Paste Zoom link below, then click enter to join meeting.").grid(column=1, row=0)
 
-    #Link entry box
-    link = StringVar()
+    #Allow a selection of which information to give in order to join a meeting
+    #Default to link mode
+    joinMode = StringVar(value="manual") 
+    
+    link = StringVar(root, value="Link")
     linkEntry = ttk.Entry(frm, width=50, textvariable=link)
-    linkEntry.grid(column=1, row=1, sticky="ew")
-    frm.columnconfigure(1, weight=1)
+    linkEntry.grid(column=1, row=0, sticky="ew")
+
+    meetingID = StringVar(root, value="Meeting ID")
+    meetingEntry = ttk.Entry(frm, width=50, textvariable=meetingID)
+    meetingEntry.grid(column=1, row=0, sticky="ew")
+    
+    passcode = StringVar(root, value="Passcode")
+    passcodeEntry = ttk.Entry(frm, width=50, textvariable=passcode)
+    passcodeEntry.grid(column=1, row=1, sticky="ew")
+
+    ttk.Radiobutton(frm, text="Join via Link", variable=joinMode, value="link").grid(column=1, row=3, sticky="w")
+    ttk.Radiobutton(frm, text="Join via Code + Passcode", variable=joinMode, value="manual").grid(column=1, row=4, sticky="w")
+
+    def toggleInputs(*args):
+        global mode
+        mode = joinMode.get()
+        if mode == "link":
+            linkEntry.grid()
+            meetingEntry.grid_remove()
+            passcodeEntry.grid_remove()
+        else:
+            linkEntry.grid_remove()
+            meetingEntry.grid()
+            passcodeEntry.grid()
+
+    toggleInputs()
+
+    joinMode.trace_add("write", toggleInputs)
+
 
     #Enter button
-    enterButton = ttk.Button(frm, text="Enter...", command=lambda: f.startMeeting(f.convertLink(link.get())))
-    enterButton.grid(column=2, row=1) 
+    enterButton = ttk.Button(frm,
+                              text="Enter...", 
+                              command=lambda: f.startMeeting(f.convertLink(link.get())) if joinMode.get() == "link" else f.startMeeting(f.manualMeeting(meetingID.get(), passcode.get())))
+    enterButton.grid(column=2, row=0) 
 
+
+    #Need to direct manual data into function for parsing and shortcut creating
     #Create shortcut button
-    shortcut = ttk.Button(frm, text="Create shortcut...", command=lambda: f.createShortcut(link.get()))
-    shortcut.grid(column=1, row=2)
+    shortcut = ttk.Button(frm, 
+                          text="Create shortcut...", 
+                          command=lambda: f.createShortcut(link.get()) if joinMode.get() == "link" else f.createShortcut(f"https://us02web.zoom.us/j/{meetingID.get()}?pwd={passcode.get()}"))
+    shortcut.grid(column=1, row=5)
 
     #Quit button
-    ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=3)
+    ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=6)
 
 
     #Adding padding
