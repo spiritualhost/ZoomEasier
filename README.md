@@ -14,8 +14,6 @@ Written in Python with Tkinter, the main point of the app is to allow quick laun
 
 The history option will allow quickly jumping back to previous meetings.
 
-![UI Preview](assets/README/shortcuts.png)
-
 Easily create desktop shortcuts (Windows) and aliases (MacOS) to jump back in to repeating meetings/rooms. 
 
 The application can be extremely helpful for those not fully familiar and/or comfortable with Zoom's UI. 
