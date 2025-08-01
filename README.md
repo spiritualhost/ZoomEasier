@@ -6,7 +6,7 @@ A basic little app to make launching into Zoom meetings a bit easier.
 
 ## Description
 
-![UI Preview](assets/README/basic.png)
+![UI Preview](assets/README/manual.png)
 
 Written in Python with Tkinter, the main point of the app is to allow quick launching of Zoom meetings by the invite link. 
 

@@ -118,7 +118,7 @@ if __name__ == "__main__":
     passcodeEntry.grid(column=1, row=1, sticky="ew")
 
     ttk.Radiobutton(frm, text="Join via Link", variable=joinMode, value="link").grid(column=1, row=3, sticky="w")
-    ttk.Radiobutton(frm, text="Join via Code + Passcode", variable=joinMode, value="manual").grid(column=1, row=4, sticky="w")
+    ttk.Radiobutton(frm, text="Join via ID + Passcode", variable=joinMode, value="manual").grid(column=1, row=4, sticky="w")
 
     def toggleInputs(*args):
         global mode
