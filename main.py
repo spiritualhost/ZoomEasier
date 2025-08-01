@@ -98,19 +98,23 @@ if __name__ == "__main__":
     #Adding widgets to the content frame
 
     #Allow a selection of which information to give in order to join a meeting
-    #Default to link mode
-    joinMode = StringVar(value="manual") 
-    
-    link = StringVar(root, value="Link")
+    #Default to manual mode
+    joinMode = StringVar(value="manual")
+
+    link = StringVar(root)
+
     linkEntry = ttk.Entry(frm, width=50, textvariable=link)
+    linkEntry.insert(0, "Enter Link")
     linkEntry.grid(column=1, row=0, sticky="ew")
 
-    meetingID = StringVar(root, value="Meeting ID")
+    meetingID = StringVar(root)
     meetingEntry = ttk.Entry(frm, width=50, textvariable=meetingID)
+    meetingEntry.insert(0, "Enter Meeting ID")
     meetingEntry.grid(column=1, row=0, sticky="ew")
     
-    passcode = StringVar(root, value="Passcode")
+    passcode = StringVar(root)
     passcodeEntry = ttk.Entry(frm, width=50, textvariable=passcode)
+    passcodeEntry.insert(0, "Enter Meeting Passcode")
     passcodeEntry.grid(column=1, row=1, sticky="ew")
 
     ttk.Radiobutton(frm, text="Join via Link", variable=joinMode, value="link").grid(column=1, row=3, sticky="w")
@@ -124,9 +128,9 @@ if __name__ == "__main__":
             meetingEntry.grid_remove()
             passcodeEntry.grid_remove()
         else:
-            linkEntry.grid_remove()
             meetingEntry.grid()
             passcodeEntry.grid()
+            linkEntry.grid_remove()
 
     toggleInputs()
 
@@ -147,8 +151,13 @@ if __name__ == "__main__":
                           command=lambda: f.createShortcut(link.get()) if joinMode.get() == "link" else f.createShortcut(f"https://us02web.zoom.us/j/{meetingID.get()}?pwd={passcode.get()}"))
     shortcut.grid(column=1, row=5)
 
+    #Clear all Button
+    clearAll = ttk.Button(frm, text="Clear all", command=lambda: linkEntry.delete(0, END) if joinMode.get() == "link" else (meetingEntry.delete(0, END), passcodeEntry.delete(0, END)))
+    clearAll.grid(column=1, row=6)
+
+
     #Quit button
-    ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=6)
+    ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=7)
 
 
     #Adding padding
